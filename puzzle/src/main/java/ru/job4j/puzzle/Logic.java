@@ -31,9 +31,9 @@ public class Logic {
         return rst;
     }
 
-    public boolean isFree(Cell... cells) {
-        boolean result = cells.length > 0;
-        for (Cell cell : cells) {
+    public boolean isFree(Cell[] steps)  {
+        boolean result = steps.length > 0;
+        for (Cell cell : steps) {
             if (findBy(cell) != -1) {
                result = false;
                break;
