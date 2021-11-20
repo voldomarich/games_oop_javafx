@@ -10,7 +10,6 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class BishopBlackTest {
-
     @Test
     public void position() {
         Figure figure = new BishopBlack(Cell.C8);
