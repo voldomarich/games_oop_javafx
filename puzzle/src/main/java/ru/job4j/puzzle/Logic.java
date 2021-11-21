@@ -24,7 +24,7 @@ public class Logic {
         int index = findBy(source);
         if (index != -1) {
             Cell[] steps = figures[index].way(dest);
-            if (isFree(steps)) {
+            if (free(steps)) {
                 rst = true;
                 figures[index] = figures[index].copy(dest);
             }
@@ -32,12 +32,20 @@ public class Logic {
         return rst;
     }
 
-    public boolean isFree(Cell[] steps)  {
+    public boolean free(Cell[] steps) throws OccupiedCellException {
+        for (int index = 0; index < steps.length; index++) {
+            if (figures[index] == steps[index]) {
+                throw OccupiedCellException;
+                break;
+            }
+    }
+
+    public boolean free(Cell[] steps)  {
         boolean result = steps.length > 0;
         for (Cell cell : steps) {
             if (findBy(cell) != -1) {
-               result = false;
-               break;
+                result = false;
+                break;
             }
         }
         return result;
