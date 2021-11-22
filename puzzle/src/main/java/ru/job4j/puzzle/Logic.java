@@ -24,23 +24,14 @@ public class Logic {
         int index = findBy(source);
         if (index != -1) {
             Cell[] steps = figures[index].way(dest);
-            if (free(steps)) {
+            if (isFree(steps)) {
                 rst = true;
                 figures[index] = figures[index].copy(dest);
             }
         }
         return rst;
     }
-
-    public boolean free(Cell[] steps) throws OccupiedCellException {
-        for (int index = 0; index < steps.length; index++) {
-            if (figures[index] == steps[index]) {
-                throw OccupiedCellException;
-                break;
-            }
-    }
-
-    public boolean free(Cell[] steps)  {
+    public boolean isFree(Cell[] steps)  {
         boolean result = steps.length > 0;
         for (Cell cell : steps) {
             if (findBy(cell) != -1) {
@@ -49,6 +40,17 @@ public class Logic {
             }
         }
         return result;
+    }
+
+    public boolean free(Cell[] steps, Figure[] figures) throws OccupiedCellException {
+        for (Cell cell : steps) {
+            for (Figure figure : figures) {
+                if (figures[index] != null && figures[index].equals(cell)) {
+                    throw OccupiedCellException;
+                }
+            }
+        }
+        return true;
     }
 
     public void clean() {

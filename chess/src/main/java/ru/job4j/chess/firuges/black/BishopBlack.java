@@ -24,12 +24,12 @@ public class BishopBlack implements Figure {
                     String.format("Could not way by diagonal from %s to %s", position, dest)
             );
         }
-            int size = dest.getX() - position().getX();
-            Cell[] steps = new Cell[dest.getX()];
+            int size = Math.abs(dest.getX() - position().getX());
+            Cell[] steps = new Cell[Math.abs(dest.getX() - position().getX())];
             int x = position.getX();
             int y = position.getY();
-            int deltaX = position().getX() + 1 - position.getX();
-            int deltaY = position().getY() + 1 - position.getY();
+            int deltaX = dest.getX() - position().getX() > 0 ? 1 : -1;
+            int deltaY = dest.getY() - position().getY() > 0 ? 1 : -1;
             for (int index = 0; index < size; index++) {
                 x = x + deltaX;
                 y = y + deltaY;
