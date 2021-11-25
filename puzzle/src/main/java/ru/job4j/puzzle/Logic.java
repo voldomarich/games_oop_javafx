@@ -5,7 +5,6 @@ import ru.job4j.puzzle.firuges.Figure;
 import java.util.Arrays;
 
 public class Logic {
-
     private final Figure[] figures = new Figure[32];
     private int index = 0;
 
