@@ -1,5 +1,6 @@
 package ru.job4j.puzzle;
 
+import ru.job4j.chess.OccupiedCellException;
 import ru.job4j.puzzle.firuges.Cell;
 import ru.job4j.puzzle.firuges.Figure;
 import java.util.Arrays;
@@ -24,7 +25,7 @@ public class Logic {
         for (Cell cell : steps) {
             for (Figure figure : figures) {
                 if (figure != null && figure.position().equals(cell)) {
-                    throw OccupiedCellException;
+                    throw new OccupiedCellException("Ячейка занята");
                 }
             }
         }
@@ -46,4 +47,3 @@ public class Logic {
         throw new FigureNotFoundException();
     }
 }
-

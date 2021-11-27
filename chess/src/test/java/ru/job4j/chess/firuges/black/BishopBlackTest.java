@@ -13,22 +13,21 @@ public class BishopBlackTest {
     @Test
     public void position() {
         Figure figure = new BishopBlack(Cell.C8);
-        new BishopBlack(Cell.C8).position();
-        assertThat(new BishopBlack(Cell.C8), is("C8(2, 0)"));
+        Cell cell = figure.position();
+        assertThat(cell, is(Cell.C8));
     }
 
     @Test
     public void copy() {
-        Figure figure = new BishopBlack(Cell.G5);
-        new BishopBlack(Cell.C8).copy(Cell.G5);
-        assertThat(new BishopBlack(position()), is("G5(6, 4)"));
+        Figure figure = new BishopBlack(Cell.C8);
+        assertThat(figure.copy(Cell.G4), is(new BishopBlack(Cell.C8)));
     }
 
     @Test
     public void way() {
         Figure figure = new BishopBlack(Cell.C8);
-        new BishopBlack(Cell.C8).way(Cell.G5);
-        assertThat(new BishopBlack(Cell.C8),
-                is("C8(2, 0), D7(3, 1), C8(2, 0)Cell.E3, Cell.F4, Cell.G5)"));
+        Cell[] way = figure.way(Cell.G4);
+        assertThat(way,
+                is(new Cell[] {Cell.D7, Cell.E6, Cell.F5, Cell.G4}));
     }
 }
