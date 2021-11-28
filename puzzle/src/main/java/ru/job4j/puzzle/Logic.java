@@ -44,6 +44,6 @@ public class Logic {
                 return index;
             }
         }
-        throw new FigureNotFoundException();
+        throw new FigureNotFoundException0();
     }
 }
