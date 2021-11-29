@@ -1,6 +1,5 @@
 package ru.job4j.puzzle;
 
-import ru.job4j.chess.OccupiedCellException;
 import ru.job4j.puzzle.firuges.Cell;
 import ru.job4j.puzzle.firuges.Figure;
 import java.util.Arrays;
@@ -13,19 +12,17 @@ public class Logic {
         figures[index++] = figure;
     }
 
-    public void move(Cell source, Cell dest)
-            throws FigureNotFoundException, ImpossibleMoveException, OccupiedCellException {
+    public void move(Cell source, Cell dest) {
         int index = findBy(source);
         Cell[] steps = figures[index].way(dest);
         free(steps);
         figures[index] = figures[index].copy(dest);
     }
 
-    private boolean free(Cell[] steps) throws OccupiedCellException {
+    private boolean free(Cell[] steps) {
         for (Cell cell : steps) {
             for (Figure figure : figures) {
                 if (figure != null && figure.position().equals(cell)) {
-                    throw new OccupiedCellException("Ячейка занята");
                 }
             }
         }
@@ -37,13 +34,13 @@ public class Logic {
         index = 0;
     }
 
-    private int findBy(Cell cell) throws FigureNotFoundException {
+    private int findBy(Cell cell) {
         for (int index = 0; index != figures.length; index++) {
             Figure figure = figures[index];
             if (figure != null && figure.position().equals(cell)) {
                 return index;
             }
         }
-        throw new FigureNotFoundException0();
+        return index;
     }
 }
