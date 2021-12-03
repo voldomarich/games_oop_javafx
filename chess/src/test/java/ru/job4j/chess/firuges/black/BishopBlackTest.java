@@ -20,7 +20,7 @@ public class BishopBlackTest {
     @Test
     public void copy() {
         Figure figure = new BishopBlack(Cell.G4);
-        assertThat(figure.copy(Cell.G4), is(new BishopBlack(Cell.G4)));
+        assertThat(figure.copy(Cell.G4).position(), is(Cell.G4));
     }
 
     @Test

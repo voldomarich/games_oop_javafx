@@ -19,16 +19,17 @@ public class LogicTest {
     }
 
     @Test(expected = FigureNotFoundException.class)
-    public void fnfe() throws FigureNotFoundException {
+    public void fnfe() throws FigureNotFoundException, OccupiedCellException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C8));
-        logic.findBy(Cell.A2);
+        logic.move(Cell.C1, Cell.E1);
     }
 
     @Test(expected = OccupiedCellException.class)
-    public void oce() {
+    public void oce() throws OccupiedCellException, FigureNotFoundException {
         Logic logic = new Logic();
+        logic.add(new BishopBlack(Cell.C8));
         logic.add(new PawnWhite(Cell.D7));
-        logic.free(new Cell[] {Cell.D7, Cell.E6, Cell.F5, Cell.G4});
+        logic.move(Cell.C8, Cell.G4);
     }
 }
